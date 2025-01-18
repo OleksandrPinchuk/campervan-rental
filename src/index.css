@@ -1,19 +1,81 @@
-@import 'node_modules/modern-normalize/modern-normalize.css';
+/* @import 'node_modules/modern-normalize/modern-normalize.css'; */
+@import 'modern-normalize/modern-normalize.css';
 
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --font-family-main: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --line-height-base: 1.5;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 600;
+  --font-size-base: 16px;
   line-height: 1.5;
-  font-weight: 400;
-
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --main-color: #101828;
+  --text-color: #475467;
+  --gray-color: #6C717B;
+  --button-color: #E44848;
+  --button-hover-color: #D84343;
+  --rating-color: #FFC531;
+  --gray-light-color: #DADDE1;
+  --badges-color: #F2F4F7;
+  --inputs-color: #F7F7F7;
+  --white-color: #FFFFFF;
 }
 
 body {
   margin: 0;
-  font-family: "Inter", serif;
+
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 64px;
+  border: solid 1px gray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: var(--main-color);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  display: block;
+}
+
+.active {
+  color: var(--button-hover-color);
 }
