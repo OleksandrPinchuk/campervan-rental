@@ -42,5 +42,5 @@ const campersSlice = createSlice({
     },
 });
 
-export const { updateFilter } = campersSlice.actions;
+// export const { updateFilter } = campersSlice.actions;
 export default campersSlice.reducer;

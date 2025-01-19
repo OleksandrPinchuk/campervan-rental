@@ -3,11 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     location: null,
     equipment: {
-        ac: false,
-        automatic: false,
+        AC: false,
         kitchen: false,
-        tv: false,
+        TV: false,
         bathroom: false,
+    },
+    transmission: {
+        automatic: false,
     },
     form: {
         van: false,
@@ -32,12 +34,17 @@ const filtersSlice = createSlice({
             const { key } = action.payload;
             state.equipment[key] = !state.equipment[key];
         },
+        toggleTransmission: (state, action) => {
+            const { automatic } = action.payload;
+            state.transmission.automatic = !automatic;
+        },
         toggleForm: (state, action) => {
             const { type } = action.payload;
             state.form[type] = !state.form[type];
         },
+        // clearFilters: () => initialState,
     }
 });
 
-export const { updateFilter, toggleEquipment, toggleForm } = filtersSlice.actions;
+export const { updateFilter, toggleEquipment, toggleTransmission, toggleForm } = filtersSlice.actions;
 export default filtersSlice.reducer;

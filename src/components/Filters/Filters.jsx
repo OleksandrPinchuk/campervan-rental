@@ -1,5 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleEquipment, updateFilter } from "../../redux/filters/slice";
+import { toggleEquipment, toggleTransmission, updateFilter } from "../../redux/filters/slice";
+import { fetchFilteredCampers } from "../../redux/campers/operations";
+
 
 
 const Filters = () => {
@@ -13,6 +15,15 @@ const Filters = () => {
     const handleEquipmentToggle = (key) => {
         dispatch(toggleEquipment({ key }));
     };
+
+    const handleTransmissionToggle = () => {
+        dispatch(toggleTransmission());
+    };
+
+    const handleSearch = () => {
+        dispatch(fetchFilteredCampers(filters));
+    };
+    
     return (
         <div>
             <input type="text" value={filters.location} onChange={handleLocationChange} placeholder="Enter location"/>
@@ -21,8 +32,11 @@ const Filters = () => {
                 <div className="equipment">
                     {Object.keys(filters.equipment).map((key) => (
                         <button key={key} onClick={() => handleEquipmentToggle(key)} className={filters.equipment[key] ? 'active' : ''}>
-                            {key.toUpperCase()}
+                            {key}
                         </button>))}
+                    <button onClick={() => handleTransmissionToggle()} className={filters.transmission.automatic ? 'active' : ''}>
+                            Automatic
+                    </button>
                 </div>
             </div>
             <div>
@@ -34,7 +48,7 @@ const Filters = () => {
                 </div>
             </div>
             <div className="filters">
-                <button className="search-button">Search</button>
+                <button onClick={handleSearch} className="search-button">Search</button>
             </div>
         </div>
     )
