@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Home from "../../pages/Home/Home.jsx";
 import Catalog from "../../pages/Catalog/Catalog.jsx";
 import Details from "../../pages/Details/Details.jsx";
