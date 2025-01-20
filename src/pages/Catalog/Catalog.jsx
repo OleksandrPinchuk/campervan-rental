@@ -8,13 +8,13 @@ import css from "./Catalog.module.css";
 const Catalog = () => {
     const dispatch = useDispatch();
 
-    // useEffect(() => {
-    //     dispatch(fetchCampers());
-    // }, [dispatch]);
-    
     useEffect(() => {
-        dispatch(fetchFilteredCampers());
+        dispatch(fetchCampers());
     }, [dispatch]);
+    
+    // useEffect(() => {
+    //     dispatch(fetchFilteredCampers());
+    // }, [dispatch]);
 
     return (
         <div className="container">
