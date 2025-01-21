@@ -1,0 +1,17 @@
+.label {
+    color: var(--gray-color);
+}
+
+.input {
+    width: 360px;
+    height: 56px;
+    margin-top: 8px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    border: none;
+    background-color: var(--inputs-color);
+}
+
+.location {
+    margin-top: 48px;
+}
