@@ -1,5 +1,6 @@
 .label {
     color: var(--gray-color);
+    display: block;
 }
 
 .input {
@@ -14,4 +15,39 @@
 
 .location {
     margin-top: 48px;
+    margin-bottom: 40px;
 }
+
+.header {
+    font-size: 16px;
+    font-weight: var(--font-weight-medium);
+    color: var(--text-color);
+    margin-bottom: 32px;
+}
+
+.button {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 112px;
+    height: 96px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-light-color);
+}
+
+.active {
+    border: 1px solid var(--button-color);
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+    /* content: var(--ac-img); */
+}
+
+/* .AC {
+    content: var(--ac-img);
+} */

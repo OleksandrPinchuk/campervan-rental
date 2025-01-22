@@ -20,8 +20,10 @@ const Filters = () => {
     };
 
     const handleTransmissionToggle = () => {
-        dispatch(toggleTransmission());
+        dispatch(toggleTransmission(payload));
+        console.log(dispatch(toggleTransmission(payload)))
     };
+    
 
     const handleSearch = () => {
         dispatch(fetchFilteredCampers(filters));
@@ -33,18 +35,19 @@ const Filters = () => {
                 <label htmlFor={locationId} className={css.label}>Location</label>
                 <input type="text" value={filters.location} onChange={handleLocationChange} id={locationId} placeholder="City" className={css.input}/>
             </div>
-            
             <div>
-                <p>Filters</p>
+                <h2 className={css.header}>Filters</h2>
                 <h3>Vehicle equipment</h3>
                 <div className="equipment">
                     {Object.keys(filters.equipment).map((key) => (
-                        <button key={key} onClick={() => handleEquipmentToggle(key)} className={filters.equipment[key] ? 'active' : ''}>
+                        <div key={`equipment-${key}`}
+                            onClick={() => handleEquipmentToggle(key)}
+                            className={`${filters.equipment[key] ? `${css.active}` : ''} ${css.button}`}>
+                            <img src={`images/${key}.svg`} className={css.icon} alt={`${key} icon`} />
                             {key}
-                        </button>))}
-                    <button onClick={() => handleTransmissionToggle()} className={filters.transmission.automatic ? 'active' : ''}>
-                            Automatic
-                    </button>
+                        </div>))}
+                    <div onClick={() => handleTransmissionToggle()}
+                        className={`${filters.transmission.automatic ? `${css.active}` : ''} ${css.button}`}>Automatic</div>
                 </div>
             </div>
             <div>

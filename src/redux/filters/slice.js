@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    location: null,
+    location: "",
     equipment: {
         AC: false,
         kitchen: false,
@@ -35,8 +35,8 @@ const filtersSlice = createSlice({
             state.equipment[key] = !state.equipment[key];
         },
         toggleTransmission: (state, action) => {
-            const { automatic } = action.payload;
-            state.transmission.automatic = !automatic;
+            // const { automatic } = action.payload;
+            state.transmission.automatic = action.payload;
         },
         toggleForm: (state, action) => {
             const { type } = action.payload;
