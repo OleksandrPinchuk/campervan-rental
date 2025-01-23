@@ -11,7 +11,6 @@ const App = () => {
 
   return (
     <Layout>
-      <div>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />}  />
@@ -21,7 +20,6 @@ const App = () => {
           </Route>
           <Route path="*" element={<NotFound />}  />
         </Routes>
-      </div>
     </Layout>
     
   )
