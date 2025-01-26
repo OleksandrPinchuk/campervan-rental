@@ -38,13 +38,16 @@ const filtersSlice = createSlice({
             // const { automatic } = action.payload;
             state.transmission.automatic = action.payload;
         },
-        toggleForm: (state, action) => {
-            const { type } = action.payload;
-            state.form[type] = !state.form[type];
+        setForm: (state, action) => {
+            state.form = action.payload;
         },
+        // toggleForm: (state, action) => {
+        //     const { type } = action.payload;
+        //     state.form[type] = !state.form[type];
+        // },
         // clearFilters: () => initialState,
     }
 });
 
-export const { updateFilter, toggleEquipment, toggleTransmission, toggleForm } = filtersSlice.actions;
+export const { updateFilter, toggleEquipment, toggleTransmission, setForm } = filtersSlice.actions;
 export default filtersSlice.reducer;
