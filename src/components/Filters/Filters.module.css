@@ -48,6 +48,6 @@
     /* content: var(--ac-img); */
 }
 
-/* .AC {
-    content: var(--ac-img);
-} */
+.radioButton {
+    display: none;
+}

@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleEquipment, toggleTransmission, updateFilter, setForm } from "../../redux/filters/slice.js";
+import { toggleEquipment, toggleTransmission, updateFilter, setForm, clearFilters } from "../../redux/filters/slice.js";
 import { fetchFilteredCampers } from "../../redux/campers/operations";
 import css from "./Filters.module.css";
 import { useId } from "react";
@@ -11,6 +11,8 @@ const Filters = () => {
     const filters = useSelector((state) => state.filters);
     const form = useSelector((state) => state.filters.form);
     const equipment = useSelector((state) => state.filters.equipment);
+    const currentTransmission = useSelector((state) => state.filters.transmission);
+    console.log(currentTransmission);
     console.log(form);
     console.log(equipment);
     const dispatch = useDispatch();
@@ -26,7 +28,6 @@ const Filters = () => {
 
     const handleTransmissionToggle = () => {
         dispatch(toggleTransmission());
-        console.log(toggleTransmission())
     };
 
     const handleSetForm = (key) => {
@@ -36,6 +37,7 @@ const Filters = () => {
 
     const handleSearch = () => {
         dispatch(fetchFilteredCampers(filters));
+        dispatch(clearFilters());
     };
     
     return (
@@ -51,9 +53,17 @@ const Filters = () => {
                     {/* {Object.keys(filters.equipment).map((key) => ( */}
                     {Object.keys(equipment).map((key) => (
                         <label key={`equipment-${key}`}
-                            onClick={() => handleEquipmentToggle(key)}
+                            // onClick={() => handleEquipmentToggle(key)}
                             className={`${filters.equipment[key] ? `${css.active}` : ''} ${css.item}`}>
                             {/* <img src={`images/${key}.svg`} className={css.icon} alt={`${key} icon`} /> */}
+                            <input 
+                            type="checkbox"
+                            name="vehicleType" 
+                            value={key} 
+                            checked={filters.form === key}
+                            onChange={() => handleEquipmentToggle(key)}
+                            className={css.radioButton}
+                        />
                             <svg className={css.icon}>
                                 <use href={`${icons}#icon-${key}`} />
                             </svg>
@@ -73,15 +83,18 @@ const Filters = () => {
             </div>
             <div>
                 <h3>Vehicle type</h3>
-                {/* <div className="vehicle-type">
-                    <button onClick={() => dispatch(updateFilter({ key: 'form', value: 'van' }))}>Van</button>
-                    <button onClick={() => dispatch(updateFilter({ key: 'form', value: 'fully-integrated' }))}>Fully Integrated</button>
-                    <button onClick={() => dispatch(updateFilter({ key: 'form', value: 'alcove' }))}>Alcove</button>
-                </div> */}
                 {Object.keys(form).map((key) => (
                         <label key={`equipment-${key}`}
-                            onClick={() => handleSetForm(key)}
-                            className={`${filters.equipment[key] ? `${css.active}` : ''} ${css.item}`}>
+                            // onClick={() => handleSetForm(key)}
+                        className={`${filters.form === key ? `${css.active}` : ''} ${css.item}`}>
+                        <input 
+                            type="radio" 
+                            name="vehicleType" 
+                            value={key} 
+                            checked={filters.form === key}
+                            onChange={() => handleSetForm(key)}
+                            className={css.radioButton}
+                        />
                             <svg className={css.icon}>
                                 <use href={`${icons}#icon-${key}`} />
                             </svg>

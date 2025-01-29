@@ -12,9 +12,9 @@ const initialState = {
         automatic: false,
     },
     form: {
-        van: false,
-        fullyIntegrated: false,
         alcove: false,
+        fullyIntegrated: false,
+        panelTruck: false,
     },
 }
 
@@ -25,7 +25,6 @@ const filtersSlice = createSlice({
         updateFilter: (state, action) => {
             const { key, value } = action.payload;
             state[key] = value;
-            // state.filters[key] = value;
         },
         setLocation: (state, action) => {
             state.location = action.payload;
@@ -35,19 +34,20 @@ const filtersSlice = createSlice({
             state.equipment[key] = !state.equipment[key];
         },
         toggleTransmission: (state, action) => {
-            // const { automatic } = action.payload;
-            state.transmission.automatic = action.payload;
+            state.transmission.automatic = 
+                typeof action.payload === 'boolean' ? action.payload : !state.transmission.automatic;
         },
+
         setForm: (state, action) => {
-            state.form = action.payload;
+            const { key } = action.payload;
+            state.form[key] = !state.form[key];
         },
-        // toggleForm: (state, action) => {
-        //     const { type } = action.payload;
-        //     state.form[type] = !state.form[type];
-        // },
-        // clearFilters: () => initialState,
+
+        clearFilters: () => {
+            return initialState;
+        }
     }
 });
 
-export const { updateFilter, toggleEquipment, toggleTransmission, setForm } = filtersSlice.actions;
+export const { clearFilters, toggleEquipment, toggleTransmission, setForm, updateFilter } = filtersSlice.actions;
 export default filtersSlice.reducer;

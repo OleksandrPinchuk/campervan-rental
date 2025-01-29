@@ -64,10 +64,15 @@ export const fetchFilteredCampers = createAsyncThunk('campers/fetchAll', async (
 
     // Додавання фільтрів до запиту
     if (filters.location) params.location = filters.location;
-    if (filters.form) params.form = filters.form;
-    // if (filters.transmission?.automatic !== undefined) {
-    //     params.transmission = filters.transmission.automatic ? 'automatic' : 'manual';
-    // }
+    if (filters.transmission.automatic) {
+        params.transmission = "automatic";
+    }
+    // if (filters.form) params.form = filters.form;
+    if (filters.form) {
+        Object.keys(filters.form).forEach((key) => {
+            if (filters.form[key]) params.form = [key];
+        });
+    }
 
     // Фільтрація за обладнанням
     if (filters.equipment) {
