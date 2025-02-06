@@ -1,3 +1,7 @@
+.filters{
+    padding-right: 64px;
+}
+
 .label {
     color: var(--gray-color);
     display: block;
@@ -25,6 +29,18 @@
     margin-bottom: 32px;
 }
 
+.title {
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: var(--font-weight-bold);
+}
+
+.line {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    border: 0.5px solid var(--gray-light-color);
+}
+
 .item {
     display: flex;
     flex-direction: column;
@@ -50,4 +66,18 @@
 
 .radioButton {
     display: none;
+}
+
+.equipment{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 8px;
+    column-gap: 12px;
+    margin-bottom: 32px;
+}
+
+.form {
+    display: flex;
+    column-gap: 12px;
+    margin-bottom: 40px;
 }
