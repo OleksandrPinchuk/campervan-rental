@@ -39,8 +39,10 @@ const filtersSlice = createSlice({
         },
 
         setForm: (state, action) => {
-            const { key } = action.payload;
-            state.form[key] = !state.form[key];
+            const { type } = action.payload;
+            Object.keys(state.form).forEach((key) => {
+                state.form[key] = key === type;
+            });
         },
 
         clearFilters: () => {

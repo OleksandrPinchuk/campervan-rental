@@ -31,8 +31,8 @@ const Filters = () => {
         dispatch(toggleTransmission());
     };
 
-    const handleSetForm = (key) => {
-        dispatch(setForm({ key }));
+    const handleSetForm = (type) => {
+        dispatch(setForm({ type }));
     };
     
 
@@ -79,18 +79,18 @@ const Filters = () => {
             <h3 className={css.title}>Vehicle type</h3>
             <hr className={css.line} />
             <ul className={css.form}>
-                {Object.keys(form).map((key) => (
-                    <li key={`equipment-${key}`}>
-                        <label className={`${filters.form[key] ? `${css.active}` : ''} ${css.item}`}>
-                    <input type="radio" name="vehicleType" value={key} checked={filters.form === key}
-                        onChange={() => handleSetForm(key)}
-                        className={css.radioButton}
-                    />
-                        <svg className={css.icon}>
-                            <use href={`${icons}#icon-${key}`} />
-                        </svg>
-                        {key}
-                    </label>
+                {Object.keys(form).map((type) => (
+                    <li key={`equipment-${type}`}>
+                        <label className={`${filters.form[type] ? `${css.active}` : ''} ${css.item}`}>
+                            <input type="radio" name="vehicleType" value={type} checked={filters.form === type}
+                                onChange={() => handleSetForm(type)}
+                                className={css.radioButton}
+                                />
+                            <svg className={css.icon}>
+                                <use href={`${icons}#icon-${type}`} />
+                            </svg>
+                            {type}
+                        </label>
                     </li>
                     ))}
             </ul>
