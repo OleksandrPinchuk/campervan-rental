@@ -2,13 +2,16 @@ import css from "./CampersCard.module.css";
 
 const CampersCard = ({camper}) => {
     return (
-        <li>
+        <li className={css.card}>
             <div>
-                <img alt="camper" className={css.img} src={camper.gallery[0].thumb} />
+                <img alt={`Camper photo ${camper.id}`} className={css.img} src={camper.gallery[0].thumb} />
             </div>
             <div>
-                <h2>{camper.name}</h2>
-                <p>€{camper.price}</p>
+                <div className={css.header}>
+                    <h2 className={css.name}>{camper.name}</h2>
+                    <p className={css.name}>€{camper.price}</p>
+                </div>
+                
                 <p>{camper.rating}({camper.reviews.length})</p>
                 <p>{camper.description}</p>
             </div>
