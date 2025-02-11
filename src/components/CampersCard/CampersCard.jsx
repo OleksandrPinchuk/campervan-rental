@@ -1,6 +1,14 @@
+import { useDispatch } from "react-redux";
 import css from "./CampersCard.module.css";
+import icons from "/symbol-defs.svg";
+import { toggleFavorite } from "../../redux/favorite/slice";
 
-const CampersCard = ({camper}) => {
+const CampersCard = ({ camper }) => {
+    const dispatch = useDispatch();
+    const camperId = camper.id;
+    const handleFavoriteToggle = (camperId) => {
+            dispatch(toggleFavorite(camperId));
+        };
     return (
         <li className={css.card}>
             <div>
@@ -9,14 +17,20 @@ const CampersCard = ({camper}) => {
             <div>
                 <div className={css.header}>
                     <h2 className={css.name}>{camper.name}</h2>
-                    <p className={css.name}>€{camper.price}</p>
+                    <div className={css.header}>
+                        <p className={css.name}>€{camper.price}</p>
+                        <button className={css.heartBtn} onClick={handleFavoriteToggle}>
+                            <svg className={css.icon}>
+                                <use href={`${icons}#icon-heart`} />
+                            </svg>
+                        </button>
+                    </div>
+                    
                 </div>
                 
                 <p>{camper.rating}({camper.reviews.length})</p>
                 <p>{camper.description}</p>
             </div>
-            
-
             {/* <ul>
                 {camper.gallery.map((image) => (
                     <li key={image.index}>

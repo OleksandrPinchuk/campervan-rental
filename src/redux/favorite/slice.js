@@ -7,12 +7,19 @@ const initialState = {
 };
 
 const favoriteSlice = createSlice({
-    name: "campers",
+    name: "favorites",
     initialState,
-    extraReducers: (builder) => {
-        builder
-            
+    reducers: {
+        toggleFavorite: (state, action) => {
+            const camperId = action.payload;
+            if (state.favorites.includes(camperId)) {
+                state.favorites = state.favorites.filter(id => id !== camperId);
+            } else {
+                state.favorites.push(camperId);
+            }
+        },
     }
 });
 
+export const { toggleFavorite } = favoriteSlice.actions;
 export default favoriteSlice.reducer;

@@ -24,6 +24,19 @@
     align-items: center
 }
 
-.price {
-    
+.icon {
+    width: 24px;
+    height: 26px;
+    /* fill: var(--button-color); */
+}
+
+.heartBtn{
+    border: none;
+    background: transparent;
+    margin-left: 12px;
+    transition: transform 0.2s;
+}
+
+.heartBtn:hover {
+    transform: scale(1.1);
 }
