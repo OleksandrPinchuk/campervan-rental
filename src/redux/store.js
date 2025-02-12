@@ -9,9 +9,9 @@ import favoriteReducer from "./favorite/slice.js";
 
 
 const persistConfig= {
-    key: "favorite",
+    key: "favorites",
     storage,
-    whitelist: ["van"],
+    whitelist: ["favorites"],
 };
 
 const persistedFavReducer = persistReducer(persistConfig, favoriteReducer);

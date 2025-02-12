@@ -5,6 +5,10 @@
     display: flex;
 }
 
+.card:not(:last-child) {
+    margin-bottom: 32px;
+}
+
 .img {
     border-radius: 10px;
     width: 292px;
@@ -27,7 +31,10 @@
 .icon {
     width: 24px;
     height: 26px;
-    /* fill: var(--button-color); */
+}
+
+.favorite {
+    fill: var(--button-color);
 }
 
 .heartBtn{
@@ -39,4 +46,37 @@
 
 .heartBtn:hover {
     transform: scale(1.1);
+}
+
+.details {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+    fill: var(--rating-color);
+    margin-right: 4px;
+}
+
+.map {
+    width: 16px;
+    height: 16px;
+    fill: var(--main-color);
+    margin-left: 16px;
+    margin-right: 4px;
+}
+
+.description {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 24px;
+    max-width: 480px;
 }
