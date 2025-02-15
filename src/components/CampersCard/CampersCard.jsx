@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import css from "./CampersCard.module.css";
 import icons from "/symbol-defs.svg";
 import { toggleFavorite } from "../../redux/favorite/slice";
+import Equipment from "../Equipment/Equipment";
 
 const CampersCard = ({ camper }) => {
     const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const CampersCard = ({ camper }) => {
                     <p>{camper.location}</p>
                 </div>
                 <p className={css.description}>{camper.description}</p>
+                <Equipment camper={camper} icons={icons} />
             </div>
             {/* <ul>
                 {camper.gallery.map((image) => (

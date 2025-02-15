@@ -5,25 +5,12 @@ const initialState = {
     items: [],
     loading: false,
     error: null,
-    // filters: {
-    //     location: '',
-    //     ac: false,
-    //     automatic: false,
-    //     kitchen: false,
-    //     tv: false,
-    //     bathroom: false,
-    //     form: '',
-    // },
 };
 
 const campersSlice = createSlice({
     name: "campers",
     initialState,
     reducers: {
-        // updateFilter: (state, action) => {
-        //     const { key, value } = action.payload;
-        //     state.filters[key] = value;
-        // },
     },
     extraReducers: (builder) => {
         builder
@@ -42,5 +29,4 @@ const campersSlice = createSlice({
     },
 });
 
-// export const { updateFilter } = campersSlice.actions;
 export default campersSlice.reducer;

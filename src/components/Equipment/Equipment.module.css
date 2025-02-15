@@ -1,0 +1,26 @@
+.equipment{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 18px;
+    background: var(--badges-color);
+}
+
+.icon {
+    width: 24px;
+    height: 26px;
+}
+
+.label {
+    size: 16px;
+    font-size: var(--font-weight-medium);
+}
