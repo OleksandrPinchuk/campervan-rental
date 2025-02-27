@@ -3,12 +3,19 @@ import css from "./CampersCard.module.css";
 import icons from "/symbol-defs.svg";
 import { toggleFavorite } from "../../redux/favorite/slice";
 import Equipment from "../Equipment/Equipment";
+import Button from "../Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const CampersCard = ({ camper }) => {
     const dispatch = useDispatch();
     const camperId = camper.id;
     const favorites = useSelector(state => state.favorite.favorites);
     const isFavorite = favorites.includes(camperId);
+    const navigate = useNavigate();
+
+    const handleButtonClick = () => {
+        navigate(`${camperId}`);
+    };
 
     return (
         <li className={css.card}>
@@ -39,6 +46,7 @@ const CampersCard = ({ camper }) => {
                 </div>
                 <p className={css.description}>{camper.description}</p>
                 <Equipment camper={camper} icons={icons} />
+                <Button size="medium" onClick={handleButtonClick}>Show more</Button>
             </div>
             {/* <ul>
                 {camper.gallery.map((image) => (

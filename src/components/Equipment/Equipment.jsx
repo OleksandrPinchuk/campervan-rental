@@ -2,15 +2,15 @@ import css from "./Equipment.module.css";
 
 const optionsMap = {
     transmission: { label: "Automatic", icon: "icon-automatic" },
-    engine: { label: "Diesel", icon: "⛽" },
+    engine: { label: "Diesel", icon: "icon-fuel" },
     AC: { label: "AC", icon: "icon-AC" },
     bathroom: { label: "Bathroom", icon: "icon-bathroom" },
     kitchen: { label: "Kitchen", icon: "icon-kitchen" },
     TV: { label: "TV", icon: "icon-TV" },
-    radio: { label: "Radio", icon: "📻" },
+    radio: { label: "Radio", icon: "icon-radio" },
     refrigerator: { label: "Refrigerator", icon: "icon-fridge" },
     microwave: { label: "Microwave", icon: "icon-microwave" },
-    gas: { label: "Gas", icon: "icon-gas-stove" },
+    gas: { label: "Gas", icon: "icon-gas" },
     water: { label: "Water", icon: "icon-water" },
 };
 

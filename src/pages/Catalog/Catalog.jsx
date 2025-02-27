@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { fetchCampers, fetchFilteredCampers } from "../../redux/campers/operations";
+import { fetchCampers } from "../../redux/campers/operations";
 import { useDispatch } from "react-redux";
 import CampersList from "../../components/CampersList/CampersList.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
