@@ -6,8 +6,6 @@ import { useId } from "react";
 import icons from "/symbol-defs.svg";
 import Button from "../Button/Button.jsx";
 
-
-
 const Filters = () => {
     const filters = useSelector((state) => state.filters);
     const form = useSelector((state) => state.filters.form);

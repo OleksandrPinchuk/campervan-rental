@@ -7,7 +7,7 @@ const fetchData = async (endpoint, params = {}, thunkAPI) => {
     try {
         const query = new URLSearchParams(params).toString();
         const response = await axios.get(`${endpoint}?${query}`);
-        return response.data.items;
+        return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
     }
@@ -17,7 +17,7 @@ export const fetchCampers = createAsyncThunk('campers/fetchAll', async (_, thunk
     return fetchData('/campers', {}, thunkAPI);
 });
 
-export const fetchFilteredCampers = createAsyncThunk('campers/fetchAll', async (filters, thunkAPI) => {
+export const fetchFilteredCampers = createAsyncThunk('campers/fetchFiltered', async (filters, thunkAPI) => {
     const params = {};
 
     if (filters.location) params.location = filters.location;
@@ -36,4 +36,8 @@ export const fetchFilteredCampers = createAsyncThunk('campers/fetchAll', async (
     }
 
     return fetchData('/campers', params, thunkAPI);
+});
+
+export const fetchCamperById = createAsyncThunk('campers/fetchById', async (id, thunkAPI) => {
+    return fetchData(`campers/${id}`, {}, thunkAPI);
 });
