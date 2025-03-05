@@ -5,7 +5,6 @@ import { toggleFavorite } from "../../redux/favorite/slice";
 import Equipment from "../Equipment/Equipment";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
-import { fetchCamperById } from "../../redux/campers/operations";
 
 const CampersCard = ({ camper }) => {
     const dispatch = useDispatch();
@@ -15,7 +14,7 @@ const CampersCard = ({ camper }) => {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        dispatch(fetchCamperById(camperId));
+        // dispatch(fetchCamperById(camperId));
         navigate(`${camperId}`);
     };
 

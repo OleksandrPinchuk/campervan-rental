@@ -6,6 +6,10 @@ const initialState = {
     currentItem: null,
     loading: false,
     error: null,
+    page: 1,
+    limit: 4,
+    totalItems: 0,
+    hasNextPage: false,
 };
 
 const campersSlice = createSlice({

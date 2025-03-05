@@ -5,12 +5,13 @@ import { fetchCamperById } from "../../redux/campers/operations";
 import icons from "/symbol-defs.svg";
 import css from "./Details.module.css";
 import Equipment from "../../components/Equipment/Equipment";
+import { selectCamper, selectLoading } from "../../redux/campers/selectors";
 
 const Details = () => {
     const { id } = useParams();
-    // const car = getCarById(id);
     const dispatch = useDispatch();
-    const camper = useSelector(state => state.campers.currentItem);
+    const camper = useSelector(selectCamper);
+    const loading = useSelector(selectLoading);
 
     useEffect(() => {
         dispatch(fetchCamperById(id));
@@ -21,13 +22,16 @@ const Details = () => {
 
     return (
         <div className="container">
-            <li className={css.card}>
+            {loading && <p>Loading...</p>}
+            {camper && (
+                <>
+                <div className={css.card}>
                 <ul>
-                {/* {camper.gallery.map((image) => (
+                {camper.gallery.map((image) => (
                     <li key={image.index}>
                         <img src={image.thumb} alt={`Camper photo ${image.index + 1}`}/>
                     </li>
-                ))} */}
+                ))}
             </ul>
             <div>
                 <div className={css.header}>
@@ -44,13 +48,12 @@ const Details = () => {
                     <svg className={css.map}>
                         <use href={`${icons}#icon-map`} />
                     </svg>
-                    {/* <p>{camper.location}</p> */}
+                    <p>{camper.location}</p>
                 </div>
-                {/* <p className={css.description}>{camper.description}</p> */}
+                <p className={css.description}>{camper.description}</p>
                 <Equipment camper={camper} icons={icons} />
             </div>
-        </li>
-             
+        </div>
             <ul>
                 <li>
                 <Link to="features">Go through the features</Link>
@@ -59,7 +62,8 @@ const Details = () => {
                 <Link to="reviews">Go through the reviews</Link>
                 </li>
             </ul>
-            <Outlet />
+                <Outlet />
+            </>)}
         </div>
     )
 }

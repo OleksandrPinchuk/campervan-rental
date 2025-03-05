@@ -3,9 +3,9 @@ import axios from "axios";
 
 axios.defaults.baseURL = 'https://66b1f8e71ca8ad33d4f5f63e.mockapi.io';
 
-const fetchData = async (endpoint, params = {}, thunkAPI) => {
+const fetchData = async (endpoint, {page = 1, limit = 4, ...params} = {}, thunkAPI) => {
     try {
-        const query = new URLSearchParams(params).toString();
+        const query = new URLSearchParams({ page, limit, ...params }).toString();
         const response = await axios.get(`${endpoint}?${query}`);
         return response.data;
     } catch (error) {

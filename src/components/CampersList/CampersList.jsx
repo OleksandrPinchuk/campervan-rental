@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux";
 import CampersCard from "../CampersCard/CampersCard"
+import { selectCampers } from "../../redux/campers/selectors";
 
 
 const CampersList = () => {
-    const campers = useSelector(state => state.campers.items);
+    const campers = useSelector(selectCampers);
     console.log(campers);
     // campers.forEach(vehicle => console.log(vehicle.form));
 
