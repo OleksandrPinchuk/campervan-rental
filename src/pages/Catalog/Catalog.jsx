@@ -1,20 +1,22 @@
 import { useEffect } from "react";
 import { fetchCampers } from "../../redux/campers/operations";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CampersList from "../../components/CampersList/CampersList.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
 import css from "./Catalog.module.css";
 
 const Catalog = () => {
     const dispatch = useDispatch();
+    let page = useSelector(state => state.campers.page);
+    console.log(page)
 
     useEffect(() => {
         dispatch(fetchCampers());
     }, [dispatch]);
     
-    // useEffect(() => {
-    //     dispatch(fetchFilteredCampers());
-    // }, [dispatch]);
+    const handleButtonClick = () => {
+        return page = page + 1
+    };
 
     return (
         <div className="container">
@@ -22,6 +24,7 @@ const Catalog = () => {
                 <Filters />
                 <CampersList />
             </div>
+            <button onClick={handleButtonClick} className={css.button}>Load more</button>
         </div>
         
     )

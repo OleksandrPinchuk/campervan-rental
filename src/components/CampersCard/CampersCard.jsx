@@ -5,11 +5,12 @@ import { toggleFavorite } from "../../redux/favorite/slice";
 import Equipment from "../Equipment/Equipment";
 import Button from "../Button/Button";
 import { useNavigate } from "react-router-dom";
+import { selectFavorites } from "../../redux/favorite/selectors";
 
 const CampersCard = ({ camper }) => {
     const dispatch = useDispatch();
     const camperId = camper.id;
-    const favorites = useSelector(state => state.favorite.favorites);
+    const favorites = useSelector(selectFavorites);
     const isFavorite = favorites.includes(camperId);
     const navigate = useNavigate();
 

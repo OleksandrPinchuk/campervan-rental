@@ -27,7 +27,7 @@ const campersSlice = createSlice({
             .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
-                state.currentItem = action.payload.items;
+                state.items = action.payload.items;
             })
             .addCase(fetchCamperById.fulfilled, (state, action) => {
                 state.loading = false;

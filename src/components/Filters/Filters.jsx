@@ -5,15 +5,14 @@ import css from "./Filters.module.css";
 import { useId } from "react";
 import icons from "/symbol-defs.svg";
 import Button from "../Button/Button.jsx";
+import { selectEquipment, selectFilters, selectForm } from "../../redux/filters/selectors.js";
+
 
 const Filters = () => {
-    const filters = useSelector((state) => state.filters);
-    const form = useSelector((state) => state.filters.form);
-    const equipment = useSelector((state) => state.filters.equipment);
-    const currentTransmission = useSelector((state) => state.filters.transmission);
-    console.log(currentTransmission);
-    console.log(form);
-    console.log(equipment);
+    const filters = useSelector(selectFilters);
+    const form = useSelector(selectForm);
+    const equipment = useSelector(selectEquipment);
+    
     const dispatch = useDispatch();
     const locationId = useId();
 
