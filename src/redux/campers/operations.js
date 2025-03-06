@@ -13,8 +13,8 @@ const fetchData = async (endpoint, {page = 1, limit = 4, ...params} = {}, thunkA
     }
 };
 
-export const fetchCampers = createAsyncThunk('campers/fetchAll', async (_, thunkAPI) => {
-    return fetchData('/campers', {}, thunkAPI);
+export const fetchCampers = createAsyncThunk('campers/fetchAll', async ({ page = 1, limit = 4 } = {}, thunkAPI) => {
+    return fetchData('/campers', { page, limit }, thunkAPI);
 });
 
 export const fetchFilteredCampers = createAsyncThunk('campers/fetchFiltered', async (filters, thunkAPI) => {

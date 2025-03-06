@@ -7,8 +7,9 @@ const initialState = {
     loading: false,
     error: null,
     page: 1,
+    hasMore: true,
     limit: 4,
-    totalItems: 0,
+    // totalItems: 0,
     hasNextPage: false,
 };
 
@@ -16,17 +17,22 @@ const campersSlice = createSlice({
     name: "campers",
     initialState,
     reducers: {
+        setPage: (state, action) => {
+            state.page = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
+                state.page = action.payload.currentPage;
                 state.items = action.payload.items;
             })
             .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
+                state.page = action.payload.currentPage;
                 state.items = action.payload.items;
             })
             .addCase(fetchCamperById.fulfilled, (state, action) => {
@@ -46,4 +52,5 @@ const campersSlice = createSlice({
     },
 });
 
+export const { setPage } = campersSlice.actions;
 export default campersSlice.reducer;
