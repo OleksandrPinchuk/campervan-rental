@@ -8,16 +8,16 @@ import { setPage } from "../../redux/campers/slice.js";
 
 const Catalog = () => {
     const dispatch = useDispatch();
-    let page = useSelector(state => state.campers.page);
-    console.log(page)
+    // let page = useSelector(state => state.campers.page);
+    // console.log(page)
 
     useEffect(() => {
         dispatch(fetchCampers());
-    }, [dispatch, page]);
+    }, [dispatch]);
     
-    // const handleButtonClick = () => {
-    //     dispatch(setPage(page + 1))
-    // };
+    const handleButtonClick = () => {
+        dispatch(setPage())
+    };
 
     return (
         <div className="container">
@@ -25,7 +25,7 @@ const Catalog = () => {
                 <Filters />
                 <CampersList />
             </div>
-            <button onClick={() => dispatch(setPage())} className={css.button}>Load more</button>
+            <button onClick={handleButtonClick} className={css.button}>Load more</button>
         </div>
         
     )

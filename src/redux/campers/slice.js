@@ -9,8 +9,13 @@ const initialState = {
     page: 1,
     hasMore: true,
     limit: 4,
-    // totalItems: 0,
-    hasNextPage: false,
+    totalItems: 0,
+    nextPage: false,
+};
+
+const calculateNextPage = (state) => {
+    const totalPages = Math.ceil(state.totalItems / state.limit);
+    state.hasNextPage = state.page < totalPages;
 };
 
 const campersSlice = createSlice({
@@ -18,7 +23,7 @@ const campersSlice = createSlice({
     initialState,
     reducers: {
         setPage: (state, action) => {
-            state.page = action.payload;
+            state.page += 1;
         }
     },
     extraReducers: (builder) => {
@@ -27,6 +32,7 @@ const campersSlice = createSlice({
                 state.loading = false;
                 state.error = null;
                 state.page = action.payload.currentPage;
+                console.log(action.payload);
                 state.items = action.payload.items;
             })
             .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
