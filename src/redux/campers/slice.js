@@ -21,7 +21,6 @@ const calculateNextPage = (state) => {
     }
 };
 
-
 const campersSlice = createSlice({
     name: "campers",
     initialState,
@@ -32,24 +31,9 @@ const campersSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
-            // .addCase(fetchCampers.fulfilled, (state, action) => {
-            //     state.loading = false;
-            //     state.error = null;
-            //     state.totalItems = action.payload.total || 0;
-            //     if (state.page === 1) {
-            //         state.items = action.payload.items || action.payload; 
-            //     } else {
-            //         state.items = [...state.items, ...(action.payload.items || action.payload)];
-            //     }
-            //     console.log(action.payload.items);
-            //     calculateNextPage(state);
-            // })
             .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
-                state.totalItems = action.payload.total || 0;
-                // state.page = action.payload.currentPage;
-                // state.items = action.payload.items;
                 state.totalItems = action.payload.total || 0;
                 if (state.page === 1) {
                     state.items = action.payload.items || action.payload;
