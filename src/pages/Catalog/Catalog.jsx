@@ -1,24 +1,26 @@
 import { useEffect } from "react";
-import { fetchCampers } from "../../redux/campers/operations";
+import {  fetchFilteredCampers } from "../../redux/campers/operations";
 import { useDispatch, useSelector } from "react-redux";
 import CampersList from "../../components/CampersList/CampersList.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
 import css from "./Catalog.module.css";
 import { setPage } from "../../redux/campers/slice.js";
+import { selectPage } from "../../redux/campers/selectors.js";
 
 const Catalog = () => {
     const dispatch = useDispatch();
-    // let page = useSelector(state => state.campers.page);
-    // console.log(page)
+    let currentPage = useSelector(selectPage);
+    console.log("Current page:", currentPage);
 
     useEffect(() => {
-        dispatch(fetchCampers());
+        dispatch(fetchFilteredCampers())
     }, [dispatch]);
     
     const handleButtonClick = () => {
-        dispatch(setPage())
+        const nextPage = currentPage + 1;
+        dispatch(setPage(nextPage));
+        dispatch(fetchFilteredCampers({ page: nextPage, limit: 4 }))
     };
-
     return (
         <div className="container">
             <div className={css.wrapper}>

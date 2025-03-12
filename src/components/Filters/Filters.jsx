@@ -6,12 +6,14 @@ import { useId } from "react";
 import icons from "/symbol-defs.svg";
 import Button from "../Button/Button.jsx";
 import { selectEquipment, selectFilters, selectForm } from "../../redux/filters/selectors.js";
+import { selectPage } from "../../redux/campers/selectors.js";
 
 
 const Filters = () => {
     const filters = useSelector(selectFilters);
     const form = useSelector(selectForm);
     const equipment = useSelector(selectEquipment);
+    const page = useSelector(selectPage);
     
     const dispatch = useDispatch();
     const locationId = useId();
@@ -34,7 +36,7 @@ const Filters = () => {
     
 
     const handleSearch = () => {
-        dispatch(fetchFilteredCampers(filters));
+        dispatch(fetchFilteredCampers({ filters, page, limit: 4 }));
         dispatch(clearFilters());
     };
     

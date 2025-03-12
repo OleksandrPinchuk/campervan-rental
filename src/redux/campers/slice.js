@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
-import { fetchCamperById, fetchCampers, fetchFilteredCampers } from "./operations";
+import { fetchCamperById, fetchFilteredCampers } from "./operations";
 
 const initialState = {
     items: [],
@@ -7,50 +7,68 @@ const initialState = {
     loading: false,
     error: null,
     page: 1,
-    hasMore: true,
     limit: 4,
     totalItems: 0,
     nextPage: false,
 };
 
 const calculateNextPage = (state) => {
-    const totalPages = Math.ceil(state.totalItems / state.limit);
-    state.hasNextPage = state.page < totalPages;
+    if (state.totalItems) {
+        const totalPages = Math.ceil(state.totalItems / state.limit);
+        state.nextPage = state.page < totalPages;
+    } else {
+        state.nextPage = state.items.length >= state.limit * state.page;
+    }
 };
+
 
 const campersSlice = createSlice({
     name: "campers",
     initialState,
     reducers: {
         setPage: (state, action) => {
-            state.page += 1;
+            state.page = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCampers.fulfilled, (state, action) => {
-                state.loading = false;
-                state.error = null;
-                state.page = action.payload.currentPage;
-                console.log(action.payload);
-                state.items = action.payload.items;
-            })
+            // .addCase(fetchCampers.fulfilled, (state, action) => {
+            //     state.loading = false;
+            //     state.error = null;
+            //     state.totalItems = action.payload.total || 0;
+            //     if (state.page === 1) {
+            //         state.items = action.payload.items || action.payload; 
+            //     } else {
+            //         state.items = [...state.items, ...(action.payload.items || action.payload)];
+            //     }
+            //     console.log(action.payload.items);
+            //     calculateNextPage(state);
+            // })
             .addCase(fetchFilteredCampers.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
-                state.page = action.payload.currentPage;
-                state.items = action.payload.items;
+                state.totalItems = action.payload.total || 0;
+                // state.page = action.payload.currentPage;
+                // state.items = action.payload.items;
+                state.totalItems = action.payload.total || 0;
+                if (state.page === 1) {
+                    state.items = action.payload.items || action.payload;
+                } else {
+                    state.items = [...state.items, ...(action.payload.items || action.payload)];
+                }
+                console.log(action.payload);
+                calculateNextPage(state);
             })
             .addCase(fetchCamperById.fulfilled, (state, action) => {
                 state.loading = false;
                 state.error = null;
                 state.currentItem = action.payload;
             })
-            .addMatcher(isAnyOf(fetchCampers.pending, fetchFilteredCampers.pending, fetchCamperById.pending,), state => {
+            .addMatcher(isAnyOf( fetchFilteredCampers.pending, fetchCamperById.pending,), state => {
                 state.loading = true;
                 state.error = null;
             })
-            .addMatcher(isAnyOf(fetchCampers.rejected, fetchFilteredCampers.rejected, fetchCamperById.rejected,), (state, action) => {
+            .addMatcher(isAnyOf( fetchFilteredCampers.rejected, fetchCamperById.rejected,), (state, action) => {
                 state.loading = false;
                 state.error = action.error.message;
             })
