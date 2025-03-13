@@ -7,14 +7,17 @@
     display: block;
 }
 
-.input {
+.select {
     width: 360px;
     height: 56px;
     margin-top: 8px;
-    padding: 16px 20px;
+    padding: 6px 46px;
     border-radius: 12px;
     border: none;
     background-color: var(--inputs-color);
+    appearance: none;
+    cursor: pointer;
+    color: var(--text-color);
 }
 
 .location {
@@ -79,4 +82,17 @@
     display: flex;
     column-gap: 12px;
     margin-bottom: 40px;
+}
+
+.map {
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 24px;
+    left: 20px;
+    fill: var(--gray-color);
+}
+
+.wrapper {
+    position: relative;
 }

@@ -22,10 +22,6 @@ const filtersSlice = createSlice({
     name: 'filters',
     initialState,
     reducers: {
-        // updateFilter: (state, action) => {
-        //     const { key, value } = action.payload;
-        //     state[key] = value;
-        // },
         setLocation: (state, action) => {
             state.location = action.payload;
         },
@@ -37,14 +33,12 @@ const filtersSlice = createSlice({
             state.transmission.automatic = 
                 typeof action.payload === 'boolean' ? action.payload : !state.transmission.automatic;
         },
-
         setForm: (state, action) => {
             const { type } = action.payload;
             Object.keys(state.form).forEach((key) => {
                 state.form[key] = key === type;
             });
         },
-
         clearFilters: () => {
             return initialState;
         }

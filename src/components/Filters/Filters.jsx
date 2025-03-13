@@ -10,14 +10,14 @@ import { selectLimit } from "../../redux/campers/selectors.js";
 import { setPage } from "../../redux/campers/slice.js";
 
 const cityList = [
-    "Kyiv, Ukraine",
-    "Dnipro, Ukraine",
-    "Poltava, Ukraine",
-    "Odesa, Ukraine",
-    "Kharkiv, Ukraine",
-    "Sumy, Ukraine",
-    "Lviv, Ukraine",
-    "Kharkiv, Ukraine",
+    "Ukraine, Kyiv",
+    "Ukraine, Dnipro",
+    "Ukraine, Poltava",
+    "Ukraine, Odesa",
+    "Ukraine, Kharkiv",
+    "Ukraine, Sumy",
+    "Ukraine, Lviv",
+    "Ukraine, Kharkiv",
 ];
 
 const Filters = () => {
@@ -26,13 +26,12 @@ const Filters = () => {
     const equipment = useSelector(selectEquipment);
     const limit = useSelector(selectLimit);
     const location = useSelector(selectLocation);
-    
     const dispatch = useDispatch();
     const locationId = useId();
 
-    const handleLocationChange = (e) => {
+    const handleLocationChange = (event) => {
         // dispatch(updateFilter({ key: 'location', value: e.target.value }));
-        dispatch(setLocation(e.target.value));
+        dispatch(setLocation(event.target.value));
     };
 
     const handleEquipmentToggle = (key) => {
@@ -58,13 +57,17 @@ const Filters = () => {
         <div className={css.filters}>
             <div className={css.location}>
                 <label htmlFor={locationId} className={css.label}>Location</label>
-                {/* <input type="text" value={filters.location || ''} onChange={handleLocationChange} id={locationId} placeholder="City" className={css.input}/> */}
-                <select className={css.customSelect} id="location-select" value={location} onChange={handleLocationChange}>
-                    <option value="">City</option>
-                        {cityList.map((item, index) => (
-                            <option key={index} value={item}>{item}</option>
-                        ))}
-                </select>
+                <div className={css.wrapper}>
+                    <svg className={css.map}>
+                        <use href={`${icons}#icon-map`} />
+                    </svg>
+                    <select className={css.select} id="location-select" value={location} onChange={handleLocationChange}>
+                        <option value="">City</option>
+                            {cityList.map((item, index) => (
+                                <option key={index} value={item}>{item}</option>
+                            ))}
+                    </select>
+                </div>
             </div>
             <h2 className={css.header}>Filters</h2>
             <h3 className={css.title}>Vehicle equipment</h3>

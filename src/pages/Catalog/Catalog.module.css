@@ -13,8 +13,9 @@
     width: 145px;
     font-size: 16px;
     font-weight: var(--font-weight-medium);
-    background-color: var(--gray-light-color);
+    background-color: var(--white-color);
     color: var(--main-color);
+    border: solid 1px var(--gray-light-color);
 }
 
 .button:hover {
