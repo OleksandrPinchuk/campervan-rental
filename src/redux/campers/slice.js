@@ -27,7 +27,11 @@ const campersSlice = createSlice({
     reducers: {
         setPage: (state, action) => {
             state.page = action.payload;
-        }
+        },
+        resetItems: (state) => {
+            state.items = [];
+            state.page = 1;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -60,5 +64,5 @@ const campersSlice = createSlice({
     },
 });
 
-export const { setPage } = campersSlice.actions;
+export const { setPage, resetItems } = campersSlice.actions;
 export default campersSlice.reducer;

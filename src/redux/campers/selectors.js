@@ -4,3 +4,4 @@ export const selectLoading = (state) => state.campers.loading;
 export const selectError = (state) => state.campers.error;
 export const selectPage = (state) => state.campers.page;
 export const selectLimit = (state) => state.campers.limit;
+export const selectNextPage = (state) => state.campers.nextPage;

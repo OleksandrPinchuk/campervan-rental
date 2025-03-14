@@ -5,6 +5,7 @@
 .label {
     color: var(--gray-color);
     display: block;
+    cursor: pointer;
 }
 
 .select {
@@ -54,6 +55,7 @@
     border-radius: 12px;
     border: 1px solid var(--gray-light-color);
     color: var(--main-color);
+    cursor: pointer;
 }
 
 .active {
@@ -76,6 +78,7 @@
     row-gap: 8px;
     column-gap: 12px;
     margin-bottom: 32px;
+    width: 360px;
 }
 
 .form {

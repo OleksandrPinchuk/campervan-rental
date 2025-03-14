@@ -4,15 +4,19 @@ import { useDispatch, useSelector } from "react-redux";
 import CampersList from "../../components/CampersList/CampersList.jsx";
 import Filters from "../../components/Filters/Filters.jsx";
 import css from "./Catalog.module.css";
-import { setPage } from "../../redux/campers/slice.js";
-import { selectPage } from "../../redux/campers/selectors.js";
+import { resetItems, setPage } from "../../redux/campers/slice.js";
+import { selectError, selectLoading, selectNextPage, selectPage } from "../../redux/campers/selectors.js";
 
 const Catalog = () => {
     const dispatch = useDispatch();
     let currentPage = useSelector(selectPage);
-    console.log("Current page:", currentPage);
+    const hasNextPage = useSelector(selectNextPage);
+    const loading = useSelector(selectLoading);
+    const error = useSelector(selectError);
+    
 
     useEffect(() => {
+        dispatch(resetItems())
         dispatch(fetchFilteredCampers())
     }, [dispatch]);
     
@@ -27,7 +31,7 @@ const Catalog = () => {
                 <Filters />
                 <CampersList />
             </div>
-            <button onClick={handleButtonClick} className={css.button}>Load more</button>
+            {(error || (hasNextPage && <button onClick={handleButtonClick} disabled={loading} className={css.button}>Load more</button>))}
         </div>
         
     )
