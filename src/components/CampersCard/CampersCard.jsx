@@ -28,7 +28,7 @@ const CampersCard = ({ camper }) => {
                 <div className={css.header}>
                     <h2 className={css.name}>{camper.name}</h2>
                     <div className={css.header}>
-                        <p className={css.name}>€{camper.price}</p>
+                        <p className={css.name}>€{`${camper.price.toFixed(2)}`}</p>
                         <button className={css.heartBtn} onClick={() => dispatch(toggleFavorite(camperId))}>
                             <svg className={`${ isFavorite ? `${css.favorite}` : ''} ${css.icon}`}>
                                 <use href={`${icons}#icon-heart`} />

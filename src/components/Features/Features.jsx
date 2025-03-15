@@ -1,31 +1,20 @@
 import { useSelector } from "react-redux";
-
 import css from "./Features.module.css";
+import Equipment from "../Equipment/Equipment";
+import { selectCamper } from "../../redux/campers/selectors";
+import icons from "/symbol-defs.svg";
 
 const Features = () => {
-    const currentCamper = useSelector(selectCurrentCamper);
-    if (!currentCamper) {
-        return <p>Camper details are not available.</p>;
-    }
+    const camper = useSelector(selectCamper);
+    // if (!currentCamper) {
+    //     return <p>Camper details are not available.</p>;
+    // }
 
-    
-    const camperDetails = generateDetails(currentCamper);
+    // const camperDetails = generateDetails(currentCamper);
 
     return (
         <div className={css.wrapper}>
-        
-        <div className={css.wrapDetails}>
-            <h3 className={css.text}>Vehicle details</h3>
-            <hr className={css.horizontLine} />
-            <ul className={css.detailsList}>
-            {camperDetails.map(({ label, value }, index) => (
-                <li className={css.detailsItem} key={index}>
-                <p className={css.detailText}>{label}</p>
-                <span className={css.detailText}>{value}</span>
-                </li>
-            ))}
-            </ul>
-        </div>
+            <Equipment camper={camper} icons={icons} />
         </div>
     );
 }

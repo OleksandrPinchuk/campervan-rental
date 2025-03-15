@@ -1,69 +1,53 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchCamperById } from "../../redux/campers/operations";
 import icons from "/symbol-defs.svg";
 import css from "./Details.module.css";
+
 import Equipment from "../../components/Equipment/Equipment";
 import { selectCamper, selectLoading } from "../../redux/campers/selectors";
+import CampersInfo from "../../components/CampersInfo/CampersInfo";
+import { Form } from "../../components/Form/Form";
 
 const Details = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
     const camper = useSelector(selectCamper);
     const loading = useSelector(selectLoading);
+    const navigate = useNavigate();
+    const location = useLocation();
 
     useEffect(() => {
         dispatch(fetchCamperById(id));
-        console.log('details')
-    }, [dispatch, id]);
-
+        if (location.pathname === `/catalog/${id}`) {
+            navigate(`/catalog/${id}/features`, { replace: true }); 
+        }
+    }, [dispatch, id, location.pathname, navigate ]);
     console.log(camper)
+
+    const getClassName = (props) => {
+        return props.isActive ? `${css.link} ${css.active}` : css.link;
+    };
 
     return (
         <div className="container">
             {loading && <p>Loading...</p>}
             {camper && (
-                <>
-                <div className={css.card}>
-                <ul>
-                {camper.gallery.map((image) => (
-                    <li key={image.index}>
-                        <img src={image.thumb} alt={`Camper photo ${image.index + 1}`}/>
-                    </li>
-                ))}
-            </ul>
-            <div>
-                <div className={css.header}>
-                    <h2 className={css.name}>{camper.name}</h2>
-                    <div className={css.header}>
-                        <p className={css.name}>€{camper.price}</p>
-                    </div>
+                <div>
+                    <CampersInfo camper={camper} />
+                    <ul className={css.navigation}>
+                        <li>
+                            <NavLink to="features" className={getClassName}>Features</NavLink>
+                        </li>
+                        <li>
+                            <NavLink to="reviews" className={getClassName}>Reviews</NavLink>
+                        </li>
+                    </ul>
+                    <Form />
+                    <Outlet />
                 </div>
-                <div className={css.details}>
-                    <svg className={css.star}>
-                        <use href={`${icons}#icon-star`} />
-                    </svg>
-                    <p>{camper.rating}({camper.reviews.length} Reviews)</p>
-                    <svg className={css.map}>
-                        <use href={`${icons}#icon-map`} />
-                    </svg>
-                    <p>{camper.location}</p>
-                </div>
-                <p className={css.description}>{camper.description}</p>
-                <Equipment camper={camper} icons={icons} />
-            </div>
-        </div>
-            <ul>
-                <li>
-                <Link to="features">Go through the features</Link>
-                </li>
-                <li>
-                <Link to="reviews">Go through the reviews</Link>
-                </li>
-            </ul>
-                <Outlet />
-            </>)}
+            )}
         </div>
     )
 }
