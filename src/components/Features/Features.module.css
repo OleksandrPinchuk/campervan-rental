@@ -27,11 +27,11 @@
 }
 
 .wrapper {
-    background-color: var(--inputs);
+    background-color: var(--inputs-color);
     border-radius: 10px;
     padding: 44px 52px;
-    width: 500px;
-    height: 100%;
+    width: 631px;
+    height: 588px;
     display: flex;
     flex-direction: column;
 }

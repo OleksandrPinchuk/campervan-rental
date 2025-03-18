@@ -1,11 +1,8 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { NavLink, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { fetchCamperById } from "../../redux/campers/operations";
-import icons from "/symbol-defs.svg";
 import css from "./Details.module.css";
-
-import Equipment from "../../components/Equipment/Equipment";
 import { selectCamper, selectLoading } from "../../redux/campers/selectors";
 import CampersInfo from "../../components/CampersInfo/CampersInfo";
 import { Form } from "../../components/Form/Form";
@@ -44,8 +41,10 @@ const Details = () => {
                             <NavLink to="reviews" className={getClassName}>Reviews</NavLink>
                         </li>
                     </ul>
-                    <Form />
-                    <Outlet />
+                    <div className={css.flex}>
+                        <Outlet />
+                        <Form />
+                    </div>
                 </div>
             )}
         </div>

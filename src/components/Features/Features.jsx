@@ -15,6 +15,15 @@ const Features = () => {
     return (
         <div className={css.wrapper}>
             <Equipment camper={camper} icons={icons} />
+            <h2>Vehicle details</h2>
+            <ul>
+                <li><p>Form{camper.form}</p></li>
+                <li><p>Length{camper.length}</p></li>
+                <li><p>Width{camper.width}</p></li>
+                <li><p>Height{camper.height}</p></li>
+                <li><p>Tank{camper.tank}</p></li>
+                <li><p>Consumption{camper.consumption}</p></li>
+            </ul>
         </div>
     );
 }

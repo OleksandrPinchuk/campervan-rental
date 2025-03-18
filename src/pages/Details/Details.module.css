@@ -27,3 +27,7 @@
     background-color: var(--button-color);
 }
 
+.flex {
+    display: flex;
+    gap: 40px;
+}
