@@ -37,7 +37,6 @@
 body {
   margin: 0;
   font-family: var(--font-family-main);
-
 }
 
 .container {
@@ -45,10 +44,10 @@ body {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  margin-bottom: 52px;
   padding: 0 64px;
   padding-top: 48px;
   border: 1px solid transparent;
-  
 }
 
 h1,

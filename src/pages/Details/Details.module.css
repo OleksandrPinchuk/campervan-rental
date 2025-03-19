@@ -23,6 +23,7 @@
     background-color: transparent;
     transition: background-color 0.2s ease;
 }
+
 .link.active::after {
     background-color: var(--button-color);
 }

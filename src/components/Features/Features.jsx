@@ -9,21 +9,21 @@ const Features = () => {
     // if (!currentCamper) {
     //     return <p>Camper details are not available.</p>;
     // }
-
-    // const camperDetails = generateDetails(currentCamper);
-
     return (
         <div className={css.wrapper}>
             <Equipment camper={camper} icons={icons} />
-            <h2>Vehicle details</h2>
-            <ul>
-                <li><p>Form{camper.form}</p></li>
-                <li><p>Length{camper.length}</p></li>
-                <li><p>Width{camper.width}</p></li>
-                <li><p>Height{camper.height}</p></li>
-                <li><p>Tank{camper.tank}</p></li>
-                <li><p>Consumption{camper.consumption}</p></li>
-            </ul>
+            <div>
+                <h3 className={css.title}>Vehicle details</h3>
+                <ul>
+                    <li className={css.item}><p className={css.text}>Form</p><p className={css.text}>{camper.form}</p></li>
+                    <li className={css.item}><p className={css.text}>Length</p><p className={css.text}>{camper.length}</p></li>
+                    <li className={css.item}><p className={css.text}>Width</p><p className={css.text}>{camper.width}</p></li>
+                    <li className={css.item}><p className={css.text}>Height</p><p className={css.text}>{camper.height}</p></li>
+                    <li className={css.item}><p className={css.text}>Tank</p><p className={css.text}>{camper.tank}</p></li>
+                    <li className={css.item}><p className={css.text}>Consumption</p><p className={css.text}>{camper.consumption}</p></li>
+                </ul>
+            </div>
+            
         </div>
     );
 }
