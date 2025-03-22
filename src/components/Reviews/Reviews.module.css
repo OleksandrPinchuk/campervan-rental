@@ -4,3 +4,63 @@
     display: flex;
     flex-direction: column;
 }
+
+.round {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 16px;
+    background-color: var(--inputs-color);
+}
+
+.text {
+    font-weight: var(--font-weight-bold);
+    font-size: 24px;
+    line-height: 1.33;
+    color: var(--button-color);
+}
+
+.flex {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    fill: var(--badges-color);
+}
+
+.star {
+    width: 16px;
+    height: 16px;
+}
+
+.rated {
+    fill: var(--rating-color);
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    font-weight: var(--font-weight-medium);
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+.item {
+    margin-bottom: 44px;
+}
+
+.comment {
+    font-size: 16px;
+    line-height: 1.5;
+}

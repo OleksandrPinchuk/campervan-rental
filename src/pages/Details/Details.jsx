@@ -21,7 +21,6 @@ const Details = () => {
             navigate(`/catalog/${id}/features`, { replace: true }); 
         }
     }, [dispatch, id, location.pathname, navigate ]);
-    console.log(camper)
 
     const getClassName = (props) => {
         return props.isActive ? `${css.link} ${css.active}` : css.link;
