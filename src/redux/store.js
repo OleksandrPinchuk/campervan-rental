@@ -6,8 +6,6 @@ import campersReducer from "./campers/slice.js";
 import filtersReducer from "./filters/slice.js";
 import favoriteReducer from "./favorite/slice.js";
 
-
-
 const persistConfig= {
     key: "favorites",
     storage,

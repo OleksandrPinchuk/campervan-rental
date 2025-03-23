@@ -43,13 +43,17 @@
 
 .gallery {
     display: flex;
-    gap: 24px;
+    gap: 48px;
     margin-bottom: 28px;
 }
 
-.image {
+.item {
+    width: calc((100% - 2 * 24px) / 3);
     height: 312px;
-    width: 292px;
+}
+.image {
+    height: 100%;
+    width: 100%;
     object-fit: cover;
     border-radius: 10px;
 }

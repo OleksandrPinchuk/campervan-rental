@@ -1,6 +1,4 @@
-
 import { Header } from "../Header/Header.jsx";
-import css from "./Layout.module.css";
 
 const Layout = ({children}) => {
     return (

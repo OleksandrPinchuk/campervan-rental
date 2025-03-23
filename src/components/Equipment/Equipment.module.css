@@ -11,6 +11,7 @@
     justify-content: center;
     gap: 8px;
     border: none;
+    mix-blend-mode: multiply;
     border-radius: 100px;
     padding: 12px 18px;
     background: var(--badges-color);

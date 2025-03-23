@@ -1,16 +1,18 @@
 import { Route, Routes } from "react-router-dom";
-import Home from "../../pages/Home/Home.jsx";
-import Catalog from "../../pages/Catalog/Catalog.jsx";
-import Details from "../../pages/Details/Details.jsx";
-import NotFound from "../../pages/NotFound/NotFound.jsx";
-import Reviews from "../Reviews/Reviews.jsx";
-import Features from "../Features/Features.jsx";
+import { Suspense, lazy } from "react";
 import Layout from "../Layout/Layout.jsx";
+const Home = lazy(() => import("../../pages/Home/Home.jsx"));
+const Catalog = lazy(() => import("../../pages/Catalog/Catalog.jsx"));
+const Details = lazy(() => import("../../pages/Details/Details.jsx"));
+const NotFound = lazy(() => import("../../pages/NotFound/NotFound.jsx"));
+const Reviews = lazy(() => import("../Reviews/Reviews.jsx"));
+const Features = lazy(() => import("../Features/Features.jsx"));
 
 const App = () => {
 
   return (
     <Layout>
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/catalog" element={<Catalog />}  />
@@ -20,9 +22,9 @@ const App = () => {
           </Route>
           <Route path="*" element={<NotFound />}  />
         </Routes>
+      </Suspense>
     </Layout>
-    
   )
 }
 
-export default App
+export default App;

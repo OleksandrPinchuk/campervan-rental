@@ -44,7 +44,7 @@ const campersSlice = createSlice({
                 } else {
                     state.items = [...state.items, ...(action.payload.items || action.payload)];
                 }
-                console.log(action.payload);
+                // console.log(action.payload);
                 calculateNextPage(state);
             })
             .addCase(fetchCamperById.fulfilled, (state, action) => {
@@ -60,7 +60,6 @@ const campersSlice = createSlice({
                 state.loading = false;
                 state.error = action.error.message;
             })
-        
     },
 });
 

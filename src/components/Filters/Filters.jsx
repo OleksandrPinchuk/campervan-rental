@@ -30,7 +30,6 @@ const Filters = () => {
     const locationId = useId();
 
     const handleLocationChange = (event) => {
-        // dispatch(updateFilter({ key: 'location', value: e.target.value }));
         dispatch(setLocation(event.target.value));
     };
 
@@ -45,7 +44,6 @@ const Filters = () => {
     const handleSetForm = (type) => {
         dispatch(setForm({ type }));
     };
-    
 
     const handleSearch = () => {
         dispatch(setPage(1))

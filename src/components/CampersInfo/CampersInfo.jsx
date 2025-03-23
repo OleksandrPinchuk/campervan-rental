@@ -22,7 +22,7 @@ const CampersInfo = ({ camper }) => {
             </div>
             <ul className={css.gallery}>
                 {camper.gallery.map((image, index) => (
-                    <li key={index}>
+                    <li key={index} className={css.item}>
                         <img src={image.original} alt={`Camper photo ${image.index + 1}`} className={css.image}/>
                     </li>
                 ))}

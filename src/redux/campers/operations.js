@@ -7,7 +7,7 @@ const fetchData = async (endpoint, params = {}, thunkAPI) => {
     try {
         const query = new URLSearchParams(params).toString();
         const response = await axios.get(`${endpoint}?${query}`);
-        console.log(response.config.url);
+        // console.log(response.config.url);
         return response.data;
     } catch (error) {
         return thunkAPI.rejectWithValue(error.message);

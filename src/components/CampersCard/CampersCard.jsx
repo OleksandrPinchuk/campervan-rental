@@ -15,7 +15,6 @@ const CampersCard = ({ camper }) => {
     const navigate = useNavigate();
 
     const handleButtonClick = () => {
-        // dispatch(fetchCamperById(camperId));
         navigate(`${camperId}`);
     };
 
