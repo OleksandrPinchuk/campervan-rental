@@ -2,10 +2,10 @@ import { Header } from "../Header/Header.jsx";
 
 const Layout = ({children}) => {
     return (
-            <div>
-                <Header />
-                {children}
-            </div>
+        <div>
+            <Header />
+            {children}
+        </div>
     );
 };
 
